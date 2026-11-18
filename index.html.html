@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOSIGNAL — RAVE • MUSIC • COMMUNITY | 14.02.2027</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <style>
+        :root {
+            --bg: #080808;
+            --fg: #F4F4F0;
+            --accent: #FF2A00;
+            --success: #00FF66;
+            --muted: #666660;
+            --border: 1px solid #F4F4F0;
+            --border-dim: 1px solid rgba(244, 244, 240, 0.25);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            border-radius: 0 !important;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            overflow-x: hidden;
+            border-left: var(--border);
+            border-right: var(--border);
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: -0.02em;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg);
+            border-bottom: var(--border);
+            display: grid;
+            grid-template-columns: 1.4fr 1.6fr auto;
+            align-items: stretch;
+        }
+
+        .header-cell {
+            padding: 14px 18px;
+            border-right: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .header-cell:last-child {
+            border-right: none;
+            gap: 8px;
+        }
+
+        .brand-logo {
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: 0.08em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--fg);
+        }
+
+        .status-dot {
+            width: 9px;
+            height: 9px;
+            background: var(--accent);
+            display: inline-block;
+            animation: blink 1.1s infinite steps(1);
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--fg);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.15s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .role-btn {
+            background: transparent;
+            color: var(--fg);
+            border: var(--border);
+            padding: 8px 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.15s;
+        }
+
+        .role-btn:hover {
+            background: var(--fg);
+            color: var(--bg);
+        }
+
+        .role-btn.accent {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .role-btn.accent:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        /* HERO */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            border-bottom: var(--border);
+            min-height: 78vh;
+        }
+
+        .hero-main {
+            padding: 40px 28px;
+            border-right: var(--border);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .hero-kicker {
+            font-size: 12px;
+            color: var(--accent);
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        h1.mega-title {
+            font-size: clamp(3.6rem, 9.5vw, 8.8rem);
+            font-weight: 900;
+            line-height: 0.88;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            margin: 12px 0 24px;
+        }
+
+        .hero-slogan {
+            font-size: clamp(1.2rem, 2.5vw, 2rem);
+            font-weight: 900;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            border-top: var(--border);
+            border-bottom: var(--border);
+            padding: 16px 0;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border: var(--border);
+        }
+
+        .meta-box {
+            padding: 16px;
+            border-right: var(--border);
+        }
+
+        .meta-box:last-child {
+            border-right: none;
+        }
+
+        .meta-label {
+            font-size: 10px;
+            color: var(--muted);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .meta-val {
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        .hero-side {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .signal-visual {
+            flex: 1;
+            border-bottom: var(--border);
+            position: relative;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(244, 244, 240, 0.04) 0px,
+                rgba(244, 244, 240, 0.04) 1px,
+                transparent 1px,
+                transparent 4px
+            );
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 32px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .radar-box {
+            width: 210px;
+            height: 210px;
+            border: var(--border);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .radar-box::before, .radar-box::after {
+            content: '';
+            position: absolute;
+            background: rgba(244, 244, 240, 0.25);
+        }
+
+        .radar-box::before { width: 100%; height: 1px; }
+        .radar-box::after { width: 1px; height: 100%; }
+
+        .radar-pulse {
+            width: 140px;
+            height: 140px;
+            border: 2px solid var(--accent);
+            animation: pulseSquare 2.4s infinite ease-out;
+        }
+
+        @keyframes pulseSquare {
+            0% { transform: scale(0.3); opacity: 1; }
+            100% { transform: scale(1.45); opacity: 0; }
+        }
+
+        .hero-cta-block {
+            padding: 28px;
+            background: var(--fg);
+            color: var(--bg);
+        }
+
+        .hero-cta-block p {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .btn-solid {
+            display: inline-block;
+            width: 100%;
+            background: var(--bg);
+            color: var(--fg);
+            border: 2px solid var(--bg);
+            padding: 16px 20px;
+            font-weight: 900;
+            font-size: 14px;
+            text-transform: uppercase;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .btn-solid:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--bg);
+        }
+
+        /* MARQUEE */
+        .marquee {
+            border-bottom: var(--border);
+            padding: 12px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            background: var(--accent);
+            color: var(--bg);
+            font-weight: 900;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .marquee-track {
+            display: inline-block;
+            animation: scrollText 24s linear infinite;
+        }
+
+        @keyframes scrollText {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* SECTION HEADER */
+        .section-bar {
+            display: grid;
+            grid-template-columns: 180px 1fr auto;
+            border-bottom: var(--border);
+            align-items: center;
+        }
+
+        .section-index {
+            padding: 20px 24px;
+            border-right: var(--border);
+            font-weight: 800;
+            font-size: 13px;
+            color: var(--accent);
+        }
+
+        .section-title {
+            padding: 20px 24px;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .section-tag {
+            padding: 20px 24px;
+            border-left: var(--border);
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        /* LINEUP */
+        .lineup-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-bottom: var(--border);
+        }
+
+        .artist-card {
+            border-right: var(--border);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 520px;
+            position: relative;
+        }
+
+        .artist-card:last-child {
+            border-right: none;
+        }
+
+        .artist-card.unlocked {
+            background: var(--bg);
+        }
+
+        .artist-card.locked {
+            background: repeating-linear-gradient(
+                -45deg,
+                #080808,
+                #080808 12px,
+                #111111 12px,
+                #111111 24px
+            );
+        }
+
+        .artist-top {
+            padding: 20px 24px;
+            border-bottom: var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .badge-open {
+            background: var(--accent);
+            color: var(--bg);
+            padding: 3px 8px;
+            font-weight: 800;
+        }
+
+        .badge-lock {
+            border: var(--border-dim);
+            color: var(--muted);
+            padding: 3px 8px;
+        }
+
+        .artist-body {
+            padding: 28px 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .artist-name {
+            font-size: clamp(2.1rem, 3.4vw, 3.2rem);
+            font-weight: 900;
+            line-height: 0.95;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .artist-genre {
+            font-size: 12px;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .artist-bio {
+            font-size: 14px;
+            line-height: 1.55;
+            color: #D4D4CE;
+            margin-bottom: 20px;
+        }
+
+        .artist-video-preview {
+            border: var(--border);
+            background: #111;
+            padding: 12px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .artist-video-preview:hover {
+            background: var(--accent);
+            color: var(--bg);
+            border-color: var(--accent);
+        }
+
+        .audio-preview-box {
+            border: var(--border);
+            padding: 14px;
+            background: #0F0F0E;
+        }
+
+        .audio-btn {
+            width: 100%;
+            background: transparent;
+            color: var(--fg);
+            border: var(--border);
+            padding: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.15s;
+        }
+
+        .audio-btn:hover, .audio-btn.playing {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--bg);
+        }
+
+        .eq-bars {
+            display: flex;
+            gap: 3px;
+            height: 14px;
+            align-items: flex-end;
+            margin-top: 10px;
+        }
+
+        .eq-bar {
+            flex: 1;
+            background: var(--muted);
+            height: 20%;
+            transition: height 0.1s;
+        }
+
+        .playing-eq .eq-bar {
+            background: var(--accent);
+            animation: eqAnim 0.45s infinite alternate;
+        }
+
+        @keyframes eqAnim {
+            0% { height: 15%; }
+            100% { height: 100%; }
+        }
+
+        /* TICKETS */
+        .tickets-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-bottom: var(--border);
+        }
+
+        .ticket-tier {
+            border-right: var(--border);
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 360px;
+        }
+
+        .ticket-tier:last-child {
+            border-right: none;
+        }
+
+        .ticket-tier.active {
+            background: var(--fg);
+            color: var(--bg);
+        }
+
+        .tier-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 800;
+            border-bottom: 1px solid currentColor;
+            padding-bottom: 12px;
+            margin-bottom: 24px;
+        }
+
+        .tier-price {
+            font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+            font-weight: 900;
+            line-height: 1;
+            margin: 12px 0;
+        }
+
+        .tier-desc {
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 24px;
+            opacity: 0.85;
+        }
+
+        .tier-btn {
+            width: 100%;
+            padding: 15px;
+            font-weight: 900;
+            font-size: 13px;
+            text-transform: uppercase;
+            border: 2px solid currentColor;
+            background: transparent;
+            color: inherit;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .ticket-tier.active .tier-btn {
+            background: var(--bg);
+            color: var(--fg);
+            border-color: var(--bg);
+        }
+
+        .ticket-tier.active .tier-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--bg);
+        }
+
+        .ticket-tier.disabled {
+            opacity: 0.45;
+        }
+
+        .ticket-tier.disabled .tier-btn {
+            cursor: not-allowed;
+        }
+
+        /* GALLERY */
+        .gallery-toolbar {
+            display: flex;
+            border-bottom: var(--border);
+        }
+
+        .filter-btn {
+            padding: 14px 24px;
+            background: transparent;
+            color: var(--fg);
+            border: none;
+            border-right: var(--border);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--fg);
+            color: var(--bg);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            border-bottom: var(--border);
+        }
+
+        .gal-item {
+            border-right: var(--border);
+            border-bottom: var(--border);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            min-height: 310px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: #101010;
+        }
+
+        .gal-item.span-7 { grid-column: span 7; }
+        .gal-item.span-5 { grid-column: span 5; border-right: none; }
+        .gal-item.span-4 { grid-column: span 4; }
+        .gal-item.span-4:nth-child(5) { border-right: none; }
+
+        .gal-media {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(130%);
+            transition: transform 0.4s ease, filter 0.3s ease;
+            opacity: 0.65;
+        }
+
+        .gal-item:hover .gal-media {
+            transform: scale(1.04);
+            filter: grayscale(20%) contrast(140%);
+            opacity: 0.85;
+        }
+
+        .gal-overlay {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: linear-gradient(180deg, rgba(8,8,8,0.7) 0%, rgba(8,8,8,0.2) 50%, rgba(8,8,8,0.9) 100%);
+        }
+
+        .gal-tag {
+            align-self: flex-start;
+            background: var(--bg);
+            border: var(--border);
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .gal-tag.video {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .gal-caption h4 {
+            font-size: 20px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .gal-caption p {
+            font-size: 12px;
+            color: #CCCCCC;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 36px 28px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 24px;
+            font-size: 12px;
+        }
+
+        /* MODALS & OVERLAYS */
+        .modal-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(8, 8, 8, 0.94);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal-backdrop.open {
+            display: flex;
+        }
+
+        .modal-box {
+            background: var(--bg);
+            border: 2px solid var(--fg);
+            width: 100%;
+            max-width: 580px;
+            position: relative;
+            max-height: 92vh;
+            overflow-y: auto;
+        }
+
+        .modal-box.wide {
+            max-width: 960px;
+        }
+
+        .modal-head {
+            padding: 16px 20px;
+            border-bottom: var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--fg);
+            color: var(--bg);
+            font-weight: 900;
+            font-size: 13px;
+            text-transform: uppercase;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .close-btn {
+            background: var(--bg);
+            color: var(--fg);
+            border: none;
+            padding: 4px 10px;
+            font-weight: 900;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            color: #BBBBBB;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            background: #111111;
+            border: var(--border);
+            color: var(--fg);
+            padding: 12px 14px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        /* DIIA VERIFICATION BOX */
+        .diia-box {
+            border: var(--border);
+            padding: 16px;
+            margin-bottom: 20px;
+            background: #101010;
+        }
+
+        .diia-btn {
+            width: 100%;
+            background: #F4F4F0;
+            color: #080808;
+            border: none;
+            padding: 14px;
+            font-weight: 900;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-transform: uppercase;
+        }
+
+        .diia-btn.verified {
+            background: var(--success);
+            color: #080808;
+        }
+
+        /* PAYMENT & CARD BOX */
+        .payment-box {
+            border: var(--border);
+            padding: 16px;
+            background: #101010;
+            margin-bottom: 18px;
+        }
+
+        .card-number-display {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            font-weight: 800;
+            background: #000;
+            border: 1px dashed var(--accent);
+            padding: 12px;
+            text-align: center;
+            color: var(--success);
+            margin: 8px 0 12px;
+            letter-spacing: 0.1em;
+        }
+
+        /* GENERATED TICKET PASS & FISCAL CHECK */
+        .ticket-pass {
+            border: 2px solid var(--fg);
+            background: #F4F4F0;
+            color: #080808;
+            padding: 24px;
+        }
+
+        .pass-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid #080808;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+            font-weight: 900;
+        }
+
+        .qr-wrapper {
+            background: #FFFFFF;
+            padding: 14px;
+            border: 2px solid #080808;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 16px auto;
+            width: fit-content;
+        }
+
+        .fiscal-check {
+            border-top: 1px dashed #080808;
+            padding-top: 12px;
+            margin-top: 12px;
+            font-size: 10px;
+            line-height: 1.4;
+        }
+
+        .wallet-buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .wallet-btn {
+            flex: 1;
+            background: #080808;
+            color: #F4F4F0;
+            border: none;
+            padding: 12px;
+            font-weight: 800;
+            font-size: 11px;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        /* GUARD & ADMIN PANELS */
+        .admin-tabs {
+            display: flex;
+            border-bottom: var(--border);
+        }
+
+        .admin-tab {
+            flex: 1;
+            padding: 12px;
+            background: transparent;
+            color: var(--fg);
+            border: none;
+            border-right: var(--border);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .admin-tab:last-child { border-right: none; }
+        .admin-tab.active { background: var(--accent); color: var(--bg); }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border: var(--border);
+            margin-bottom: 20px;
+        }
+
+        .stat-cell {
+            padding: 14px;
+            border-right: var(--border);
+        }
+        .stat-cell:last-child { border-right: none; }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        .data-table th, .data-table td {
+            border: var(--border-dim);
+            padding: 10px;
+            text-align: left;
+        }
+
+        .data-table th {
+            background: #161616;
+            text-transform: uppercase;
+        }
+
+        .verify-banner {
+            padding: 20px;
+            border: 2px solid currentColor;
+            margin-top: 16px;
+            font-weight: 800;
+        }
+
+        .verify-ok { color: var(--success); background: rgba(0, 255, 102, 0.08); }
+        .verify-used { color: var(--accent); background: rgba(255, 42, 0, 0.12); }
+
+        @media (max-width: 960px) {
+            header { grid-template-columns: 1fr auto; }
+            .header-nav-cell { display: none; }
+            .hero, .lineup-grid, .tickets-grid, footer { grid-template-columns: 1fr; }
+            .hero-main, .artist-card, .ticket-tier { border-right: none; border-bottom: var(--border); }
+            .gal-item.span-7, .gal-item.span-5, .gal-item.span-4 { grid-column: span 12; border-right: none; }
+            .section-bar { grid-template-columns: 100px 1fr; }
+            .section-tag { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-cell">
+            <a href="#" class="brand-logo">
+                <span class="status-dot"></span>
+                NOSIGNAL
+            </a>
+            <span class="mono" style="font-size:11px; color:var(--muted);">VINNYTSIA // UA</span>
+        </div>
+        <div class="header-cell header-nav-cell">
+            <nav class="mono">
+                <a href="#lineup">[01] LINEUP</a>
+                <a href="#tickets">[02] КВИТКИ</a>
+                <a href="#archive">[03] АРХІВ</a>
+            </nav>
+            <span class="mono" style="font-size:11px;">14.02.2027</span>
+        </div>
+        <div class="header-cell">
+            <button class="role-btn accent" onclick="openGuardAccess()">ОХОРОНА</button>
+            <button class="role-btn" onclick="openAdminAccess()">АДМІН</button>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-main">
+            <div>
+                <div class="hero-kicker mono">/// SIGNAL LOST — RAVE INITIATED • 16+ STRICT</div>
+                <h1 class="mega-title">NO<br>SIGNAL</h1>
+                <div class="hero-slogan">
+                    <span>YOUR NIGHT. YOUR ENERGY.</span>
+                    <span class="mono" style="font-size:13px; color:var(--accent);">[VINNYTSIA]</span>
+                </div>
+            </div>
+            <div class="hero-meta-grid mono">
+                <div class="meta-box">
+                    <div class="meta-label">ДАТА ПОДІЇ</div>
+                    <div class="meta-val">14.02.2027</div>
+                </div>
+                <div class="meta-box">
+                    <div class="meta-label">ЛОКАЦІЯ</div>
+                    <div class="meta-val">SECRET WAREHOUSE</div>
+                </div>
+                <div class="meta-box">
+                    <div class="meta-label">ВІКОВИЙ ЦЕНЗ</div>
+                    <div class="meta-val" style="color:var(--accent);">16+ [ДІЯ]</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-side">
+            <div class="signal-visual">
+                <div class="radar-box">
+                    <div class="radar-pulse"></div>
+                    <span class="mono" style="position:absolute; font-size:11px; font-weight:800;">142 BPM</span>
+                </div>
+                <div class="mono" style="font-size:12px; max-width:280px; line-height:1.6;">
+                    ІНДУСТРІАЛЬНИЙ ЗВУК, СТРОБОСКОПИ ТА ПОВНА ВІДСУТНІСТЬ ЗОВНІШНЬОГО СИГНАЛУ.
+                </div>
+            </div>
+            <div class="hero-cta-block">
+                <p class="mono" id="hero-wave-label">АКТИВНИЙ 1-Й ЕТАП ПРОДАЖУ — 250 ₴</p>
+                <a href="#tickets" class="btn-solid mono">ОТРИМАТИ ПРОПУСК →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee mono">
+        <div class="marquee-track">
+            NOSIGNAL VINNYTSIA • 14.02.2027 • YOUR NIGHT. YOUR ENERGY. • HEADLINER 01: DJ UFONIK • ВХІД СУВОРО 16+ ЧЕРЕЗ ДІЮ • NOSIGNAL VINNYTSIA • 14.02.2027 • YOUR NIGHT. YOUR ENERGY. • HEADLINER 01: DJ UFONIK • ВХІД СУВОРО 16+ ЧЕРЕЗ ДІЮ •&nbsp;
+        </div>
+    </div>
+
+    <!-- SECTION 01: LINEUP -->
+    <section id="lineup">
+        <div class="section-bar">
+            <div class="section-index mono">[01 // 03]</div>
+            <h2 class="section-title">LINEUP: РОЗСЕКРЕЧЕННЯ</h2>
+            <div class="section-tag mono">1 З 3 АРТИСТІВ ВІДКРИТО</div>
+        </div>
+
+        <div class="lineup-grid" id="lineup-container">
+            <!-- Artist 1 with Video Invitation -->
+            <article class="artist-card unlocked">
+                <div class="artist-top mono">
+                    <span>SLOT // 01</span>
+                    <span class="badge-open">CONFIRMED</span>
+                </div>
+                <div class="artist-body">
+                    <div>
+                        <h3 class="artist-name">DJ UFONIK</h3>
+                        <div class="artist-genre mono">HARDGROOVE / PEAK-TIME TECHNO / VINNYTSIA SIGNAL</div>
+                        <p class="artist-bio">
+                            «Йо, Вінниця. DJ UFONIK на зв'язку. Побачимося 14 лютого у клубі No Signal, буде багато нових знайомств, улюблена музика та незабутні емоції. Клич друзів, бери квитки та зустрінемося на цьому танцполі!»
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="artist-video-preview mono" onclick="openLightbox('ВІДЕОЗВЕРНЕННЯ // DJ UFONIK', '«Йо, Вінниця! Побачимося 14 лютого на No Signal. Клич друзів, бери квитки!»', 'video-ufonik')">
+                            <span>▶ ВІДЕОПЕРЕГЛЯД ЗВЕРНЕННЯ DJ UFONIK</span>
+                            <span style="color:var(--accent);">00:30</span>
+                        </div>
+
+                        <div class="audio-preview-box">
+                            <button class="audio-btn" id="audio-toggle-btn" onclick="toggleAudioPreview()">
+                                <span id="audio-btn-text">▶ PLAY SIGNAL [PREVIEW]</span>
+                                <span class="mono">142 BPM</span>
+                            </button>
+                            <div class="eq-bars" id="eq-visualizer">
+                                <div class="eq-bar" style="animation-delay:0.1s"></div>
+                                <div class="eq-bar" style="animation-delay:0.3s"></div>
+                                <div class="eq-bar" style="animation-delay:0.05s"></div>
+                                <div class="eq-bar" style="animation-delay:0.25s"></div>
+                                <div class="eq-bar" style="animation-delay:0.4s"></div>
+                                <div class="eq-bar" style="animation-delay:0.15s"></div>
+                                <div class="eq-bar" style="animation-delay:0.35s"></div>
+                                <div class="eq-bar" style="animation-delay:0.2s"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Artist 2 -->
+            <article class="artist-card locked" id="artist-slot-2">
+                <div class="artist-top mono">
+                    <span>SLOT // 02</span>
+                    <span class="badge-lock">ENCRYPTED</span>
+                </div>
+                <div class="artist-body">
+                    <div>
+                        <h3 class="artist-name" style="color:var(--muted);">[CLASSIFIED]</h3>
+                        <div class="artist-genre mono">SIGNAL FREQUENCY LOCKED</div>
+                        <p class="artist-bio" style="color:var(--muted);">
+                            Другий резидент лайнапу перебуває в режимі радіотиші. Анонс відбудеться після закриття 1-ї хвилі квитків.
+                        </p>
+                    </div>
+                    <div class="mono" style="font-size:11px; color:var(--muted); border-top:var(--border-dim); padding-top:12px;">
+                        STATUS: AWAITING DECRYPTION...
+                    </div>
+                </div>
+            </article>
+
+            <!-- Artist 3 -->
+            <article class="artist-card locked" id="artist-slot-3">
+                <div class="artist-top mono">
+                    <span>SLOT // 03</span>
+                    <span class="badge-lock">ENCRYPTED</span>
+                </div>
+                <div class="artist-body">
+                    <div>
+                        <h3 class="artist-name" style="color:var(--muted);">[CLASSIFIED]</h3>
+                        <div class="artist-genre mono">SIGNAL FREQUENCY LOCKED</div>
+                        <p class="artist-bio" style="color:var(--muted);">
+                            Фінальний хедлайнер ночі 14.02.2027. Спеціальний гість для закриття рейву у Вінниці.
+                        </p>
+                    </div>
+                    <div class="mono" style="font-size:11px; color:var(--muted); border-top:var(--border-dim); padding-top:12px;">
+                        STATUS: AWAITING DECRYPTION...
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- SECTION 02: TICKETS -->
+    <section id="tickets">
+        <div class="section-bar">
+            <div class="section-index mono">[02 // 03]</div>
+            <h2 class="section-title">КВИТКИ: 3 ЕТАПИ + ВХІД</h2>
+            <div class="section-tag mono">ВЕРИФІКАЦІЯ ВІКУ 16+ ЧЕРЕЗ ДІЮ</div>
+        </div>
+
+        <div class="tickets-grid" id="tickets-container">
+            <!-- Rendered by JS based on Admin state -->
+        </div>
+    </section>
+
+    <!-- SECTION 03: ARCHIVE GALLERY -->
+    <section id="archive">
+        <div class="section-bar">
+            <div class="section-index mono">[03 // 03]</div>
+            <h2 class="section-title">АРХІВ: ФОТО ТА ВІДЕО</h2>
+            <div class="section-tag mono">VISUAL LOGS // 2025—2027</div>
+        </div>
+
+        <div class="gallery-toolbar">
+            <button class="filter-btn active" onclick="filterGallery('all', this)">ВСІ МАТЕРІАЛИ [05]</button>
+            <button class="filter-btn" onclick="filterGallery('photo', this)">ФОТО [03]</button>
+            <button class="filter-btn" onclick="filterGallery('video', this)">ВІДЕО [02]</button>
+        </div>
+
+        <div class="gallery-grid" id="gallery-grid">
+            <div class="gal-item span-7" data-type="video" onclick="openLightbox('ВІДЕОЗВЕРНЕННЯ // DJ UFONIK', '«Йо, Вінниця! Побачимося 14 лютого на No Signal. Клич друзів, бери квитки!»', 'video-ufonik')">
+                <img class="gal-media" src="https://images.unsplash.com/photo-1571266028243-3716f02d2d2e?auto=format&fit=crop&w=1200&q=80" alt="DJ UFONIK Teaser">
+                <div class="gal-overlay">
+                    <span class="gal-tag video mono">▶ VIDEO // DJ UFONIK INVITE</span>
+                    <div class="gal-caption">
+                        <h4>DJ UFONIK — ВІДЕОЗВЕРНЕННЯ ДО ВІННИЦІ</h4>
+                        <p class="mono">«Йо, Вінниця! Побачимося 14 лютого на No Signal...»</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gal-item span-5" data-type="photo" onclick="openLightbox('WAREHOUSE STROBE // 01', 'Індустріальний простір та світлова інсталяція NOSIGNAL.', 'photo', 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80')">
+                <img class="gal-media" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=900&q=80" alt="Rave Crowd">
+                <div class="gal-overlay">
+                    <span class="gal-tag mono">PHOTO // RAW_01</span>
+                    <div class="gal-caption">
+                        <h4>CONCRETE & STROBE</h4>
+                        <p class="mono">Атмосфера танцполу під час пікового сету</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gal-item span-4" data-type="photo" onclick="openLightbox('SOUND SYSTEM // 02', 'Акустичний масив та низькочастотний тиск.', 'photo', 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80')">
+                <img class="gal-media" src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80" alt="DJ Booth">
+                <div class="gal-overlay">
+                    <span class="gal-tag mono">PHOTO // RAW_02</span>
+                    <div class="gal-caption">
+                        <h4>BOOTH TELEMETRY</h4>
+                        <p class="mono">Робоча зона артистів</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gal-item span-4" data-type="video" onclick="openLightbox('AFTERMOVIE // NO SIGNAL', 'Архівний відеозвіт з попередньої ночі ком’юніті.', 'video')">
+                <img class="gal-media" src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?auto=format&fit=crop&w=800&q=80" alt="Laser Rave">
+                <div class="gal-overlay">
+                    <span class="gal-tag video mono">▶ VIDEO // RECAP</span>
+                    <div class="gal-caption">
+                        <h4>SIGNAL LOST RECAP</h4>
+                        <p class="mono">Хроніка ночі • 04:15 AM</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gal-item span-4" data-type="photo" onclick="openLightbox('COMMUNITY // 03', 'Ком’юніті NOSIGNAL без камер та зайвого шуму.', 'photo', 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80')">
+                <img class="gal-media" src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80" alt="Community">
+                <div class="gal-overlay">
+                    <span class="gal-tag mono">PHOTO // RAW_03</span>
+                    <div class="gal-caption">
+                        <h4>YOUR NIGHT. YOUR ENERGY.</h4>
+                        <p class="mono">Вінниця // Андеграунд ком’юніті</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="mono">
+        <div>
+            <strong style="font-size:16px;">NOSIGNAL // VINNYTSIA</strong>
+            <p style="color:var(--muted); margin-top:8px;">RAVE • MUSIC • COMMUNITY. Всі права захищено. Вхід 16+ за наявності верифікації Дія та чинного QR-пропуску.</p>
+        </div>
+        <div>
+            <strong>СОЦМЕРЕЖІ</strong><br><br>
+            <a href="https://www.instagram.com/nosignaldesign666?fqnt=amJrcHNjbzZleW1j&utm_source=qr" target="_blank" style="color:var(--accent); text-decoration:none;">→ INSTAGRAM (@nosignaldesign666)</a><br>
+            <a href="https://www.tiktok.com/@nosignal66661?_r=1&_t=ZS-9BW4RcTf7tG" target="_blank" style="color:var(--accent); text-decoration:none;">→ TIKTOK (@nosignal66661)</a>
+        </div>
+        <div>
+            <strong>СИСТЕМНІ ТЕРМІНАЛИ</strong><br><br>
+            <span style="color:var(--muted);">ОХОРОНА PIN: 1111</span><br>
+            <span style="color:var(--muted);">АДМІН PIN: 0000</span><br>
+            <span style="color:var(--accent);">DATE: 14.02.2027</span>
+        </div>
+    </footer>
+
+    <!-- MODAL 1: TICKET PURCHASE, CARD PAYMENT & DIIA 16+ -->
+    <div class="modal-backdrop" id="buy-modal">
+        <div class="modal-box">
+            <div class="modal-head mono">
+                <span id="buy-modal-title">ОФОРМЛЕННЯ КВИТКА // ЕТАП 1</span>
+                <button class="close-btn" onclick="closeModal('buy-modal')">✕</button>
+            </div>
+            <div class="modal-body" id="buy-form-container">
+                <div class="diia-box">
+                    <div class="mono" style="font-size:11px; margin-bottom:10px; color:#CCCCCC;">
+                        КРОК 1: ОБОВ'ЯЗКОВА ПЕРЕВІРКА ВІКУ (16+) ЧЕРЕЗ ДІЮ
+                    </div>
+                    <button type="button" class="diia-btn mono" id="diia-verify-btn" onclick="verifyAgeWithDiia()">
+                        <span>[ДІЯ] ПІДТВЕРДИТИ ВІК 16+</span>
+                    </button>
+                    <div id="diia-status-msg" class="mono" style="font-size:11px; margin-top:8px; color:var(--muted);">
+                        Статус: очікується шеринг цифрового документа...
+                    </div>
+                </div>
+
+                <div class="payment-box">
+                    <div class="mono" style="font-size:11px; margin-bottom:6px; color:#CCCCCC;">
+                        КРОК 2: РЕКВІЗИТИ ДЛЯ ОПЛАТИ (КАРТКА)
+                    </div>
+                    <div style="font-size:11px; color:var(--muted);">ПЕРЕКАЖІТЬ СУМУ НА КАРТКУ ТА НАТИСНІТЬ ПІДТВЕРДИТИ:</div>
+                    <div class="card-number-display">5168 7450 3745 9846</div>
+                </div>
+
+                <form onsubmit="completePurchase(event)">
+                    <div class="form-group">
+                        <label class="mono">ІМ'Я ТА ПРІЗВИЩЕ ГОСТЯ</label>
+                        <input type="text" id="guest-name" class="form-input" placeholder="НАПРИКЛАД: ОЛЕКСАНДР КОВАЛЬ" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="mono">TELEGRAM АБО EMAIL ДЛЯ РЕЗЕРВУ</label>
+                        <input type="text" id="guest-contact" class="form-input" placeholder="@username або email@domain.com" required>
+                    </div>
+                    <button type="submit" class="btn-solid mono" id="submit-ticket-btn" style="background:var(--accent); color:var(--bg); border-color:var(--accent);">
+                        ПІДТВЕРДИТИ ОПЛАТУ ТА ОТРИМАТИ ЧЕК →
+                    </button>
+                </form>
+            </div>
+
+            <!-- Generated Ticket Pass & Fiscal Check -->
+            <div class="modal-body" id="ticket-result-container" style="display:none;">
+                <div class="ticket-pass mono">
+                    <div class="pass-header">
+                        <span>NOSIGNAL // E-TICKET & CHECK</span>
+                        <span id="pass-tier-badge">WAVE 1 • 250 ₴</span>
+                    </div>
+                    <div style="font-size:12px; margin-bottom:6px;">ГІСТЬ: <strong id="pass-owner"></strong></div>
+                    <div style="font-size:12px; margin-bottom:6px;">ПОДІЯ: <strong>14.02.2027 • ВІННИЦЯ</strong></div>
+                    <div style="font-size:12px; margin-bottom:12px;">ВІК 16+: <strong style="background:#00FF66; padding:2px 6px; color:#080808;">ПІДТВЕРДЖЕНО [ДІЯ]</strong></div>
+
+                    <div class="qr-wrapper">
+                        <div id="qrcode-canvas"></div>
+                    </div>
+
+                    <div style="text-align:center; font-weight:800; font-size:13px; margin-bottom:10px;" id="pass-id-display">
+                        ID: NSG-000000
+                    </div>
+
+                    <div class="fiscal-check">
+                        <strong>ФІСКАЛЬНИЙ ЧЕК № <span id="check-num">984512</span></strong><br>
+                        ПН ПЛАТНИКА: ЕЛЕКТРОННИЙ РЕЗИДЕНТ<br>
+                        КАРТКА ОТРИМУВАЧА: 5168****9846<br>
+                        СТАТУС: ОПЛАЧЕНО • ЗАРАХОВАНО<br>
+                        ДАТА ТА ЧАС: <span id="check-time"></span>
+                    </div>
+
+                    <div class="wallet-buttons">
+                        <button class="wallet-btn" onclick="alert('Квиток додано в Apple Wallet!')"> Apple Wallet</button>
+                        <button class="wallet-btn" onclick="alert('Квиток додано в Google Pay!')">G Pay / Pass</button>
+                    </div>
+                </div>
+                <button class="btn-solid mono" style="margin-top:16px;" onclick="testTicketInGuardMode()">
+                    ПЕРЕВІРИТИ ЦЕЙ КВИТОК В ОХОРОНІ →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: PIN LOGIN FOR GUARD / ADMIN -->
+    <div class="modal-backdrop" id="pin-modal">
+        <div class="modal-box" style="max-width:400px;">
+            <div class="modal-head mono">
+                <span id="pin-modal-title">АВТОРИЗАЦІЯ ДОСТУПУ</span>
+                <button class="close-btn" onclick="closeModal('pin-modal')">✕</button>
+            </div>
+            <div class="modal-body">
+                <p class="mono" style="font-size:12px; margin-bottom:14px;" id="pin-hint">Введіть PIN-код доступу:</p>
+                <input type="password" id="pin-input" class="form-input" maxlength="4" placeholder="••••" style="font-size:24px; text-align:center; letter-spacing:0.4em; margin-bottom:16px;">
+                <button class="btn-solid mono" onclick="submitPin()">УВІЙТИ В ТЕРМІНАЛ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: GUARD MODE (SCANNER & VERIFICATION) -->
+    <div class="modal-backdrop" id="guard-modal">
+        <div class="modal-box wide">
+            <div class="modal-head mono" style="background:var(--accent); color:var(--bg);">
+                <span>[GUARD TERMINAL] КОНТРОЛЬ ВХОДУ • NOSIGNAL 14.02.2027</span>
+                <button class="close-btn" onclick="stopCameraAndCloseGuard()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:24px;">
+                    <div>
+                        <div class="mono" style="font-size:12px; font-weight:800; margin-bottom:10px;">1. СКАНЕР КАМЕРИ (IPHONE / ANDROID)</div>
+                        <div id="qr-reader" style="width:100%; border:var(--border); background:#000; min-height:240px;"></div>
+                        <div style="display:flex; gap:10px; margin-top:10px;">
+                            <button class="role-btn accent" style="flex:1;" onclick="startCameraScanner()">УВІМКНУТИ КАМЕРУ</button>
+                            <button class="role-btn" style="flex:1;" onclick="stopCameraScanner()">ЗУПИНИТИ</button>
+                        </div>
+
+                        <div class="mono" style="font-size:12px; font-weight:800; margin:20px 0 10px;">2. РУЧНА ПЕРЕВІРКА ЗА ID КВИТКА</div>
+                        <div style="display:flex; gap:8px;">
+                            <input type="text" id="manual-ticket-id" class="form-input" placeholder="NSG-XXXXXX">
+                            <button class="role-btn accent" onclick="verifyTicketById(document.getElementById('manual-ticket-id').value)">ПЕРЕВІРИТИ</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="mono" style="font-size:12px; font-weight:800; margin-bottom:10px;">РЕЗУЛЬТАТ ВЕРИФІКАЦІЇ</div>
+                        <div id="guard-result-area" class="mono" style="border:var(--border); padding:20px; min-height:240px; display:flex; flex-direction:column; justify-content:center;">
+                            <span style="color:var(--muted);">Очікування сканування QR-коду або введення ID квитка...</span>
+                        </div>
+
+                        <div class="mono" style="font-size:12px; font-weight:800; margin:20px 0 10px;">ОСТАННІ ПРОХОДИ НА ВХОДІ</div>
+                        <div id="guard-logs" class="mono" style="font-size:11px; border:var(--border-dim); padding:10px; max-height:140px; overflow-y:auto;">
+                            Записів ще немає.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 4: ADMIN PANEL -->
+    <div class="modal-backdrop" id="admin-modal">
+        <div class="modal-box wide">
+            <div class="modal-head mono">
+                <span>[ADMIN CONSOLE] УПРАВЛІННЯ ІВЕНТОМ NOSIGNAL</span>
+                <div style="display:flex; gap:8px;">
+                    <button class="close-btn" style="background:var(--accent); color:var(--bg);" onclick="downloadStandaloneHTML()">ЗАВАНТАЖИТИ .HTML ДЛЯ ХОСТИНГУ ↓</button>
+                    <button class="close-btn" onclick="closeModal('admin-modal')">✕</button>
+                </div>
+            </div>
+
+            <div class="admin-tabs mono">
+                <button class="admin-tab active" onclick="switchAdminTab('tickets-tab', this)">КВИТКИ ТА БАЗА</button>
+                <button class="admin-tab" onclick="switchAdminTab('waves-tab', this)">ЕТАПИ ПРОДАЖУ</button>
+                <button class="admin-tab" onclick="switchAdminTab('lineup-tab', this)">LINEUP (3 АРТИСТИ)</button>
+            </div>
+
+            <div class="modal-body">
+                <!-- TAB 1: TICKETS & STATS -->
+                <div id="tickets-tab">
+                    <div class="stats-row mono">
+                        <div class="stat-cell">
+                            <div style="font-size:10px; color:var(--muted);">ПРОДАНО КВИТКІВ</div>
+                            <div style="font-size:24px; font-weight:900;" id="stat-total-tickets">0</div>
+                        </div>
+                        <div class="stat-cell">
+                            <div style="font-size:10px; color:var(--muted);">ЗАГАЛЬНА КАСА</div>
+                            <div style="font-size:24px; font-weight:900; color:var(--success);" id="stat-revenue">0 ₴</div>
+                        </div>
+                        <div class="stat-cell">
+                            <div style="font-size:10px; color:var(--muted);">ПРОЙШЛИ ОХОРОНУ</div>
+                            <div style="font-size:24px; font-weight:900; color:var(--accent);" id="stat-checked-in">0</div>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; gap:10px; margin-bottom:16px;">
+                        <input type="text" id="vip-guest-name" class="form-input" placeholder="Ім'я гостя для VIP / GUEST пропуску">
+                        <button class="role-btn accent" onclick="issueVipTicket()">+ ВИДАТИ VIP КВИТОК</button>
+                    </div>
+
+                    <div style="overflow-x:auto;">
+                        <table class="data-table mono">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>ГІСТЬ</th>
+                                    <th>ЕТАП / ЦІНА</th>
+                                    <th>ДІЯ 16+</th>
+                                    <th>СТАТУС ВХОДУ</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-tickets-tbody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TAB 2: WAVES CONTROL -->
+                <div id="waves-tab" style="display:none;">
+                    <p class="mono" style="font-size:12px; margin-bottom:16px;">Оберіть активний етап продажу квитків на головній сторінці:</p>
+                    <div class="form-group">
+                        <label class="mono">ПОТОЧНИЙ АКТИВНИЙ ЕТАП</label>
+                        <select id="admin-active-wave" class="form-select" onchange="updateActiveWave(this.value)">
+                            <option value="1">1-Й ЕТАП — 250 ₴ (EARLY BIRD)</option>
+                            <option value="2">2-Й ЕТАП — 350 ₴ (SECOND WAVE)</option>
+                            <option value="3">3-Й ЕТАП — 500 ₴ (FINAL RELEASE)</option>
+                            <option value="4">SOLD OUT (ПРОДАЖ ОНЛАЙН ЗАКРИТО — ЛИШЕ НА ВХОДІ 500 ₴)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- TAB 3: LINEUP CONTROL -->
+                <div id="lineup-tab" style="display:none;">
+                    <p class="mono" style="font-size:12px; margin-bottom:16px;">Розсекречення 2-го та 3-го артистів на головній сторінці:</p>
+                    <div style="border:var(--border-dim); padding:16px; margin-bottom:16px;">
+                        <strong class="mono">АРТИСТ #2</strong>
+                        <input type="text" id="admin-a2-name" class="form-input" placeholder="Ім'я артиста (напр. DJ VORTEX)" style="margin:8px 0;">
+                        <input type="text" id="admin-a2-genre" class="form-input" placeholder="Жанр (напр. INDUSTRIAL TECHNO)" style="margin-bottom:8px;">
+                        <input type="text" id="admin-a2-bio" class="form-input" placeholder="Короткий опис" style="margin-bottom:8px;">
+                        <button class="role-btn accent" onclick="revealArtist(2)">ОПУБЛІКУВАТИ АРТИСТА #2</button>
+                    </div>
+                    <div style="border:var(--border-dim); padding:16px;">
+                        <strong class="mono">АРТИСТ #3</strong>
+                        <input type="text" id="admin-a3-name" class="form-input" placeholder="Ім'я артиста" style="margin:8px 0;">
+                        <input type="text" id="admin-a3-genre" class="form-input" placeholder="Жанр" style="margin-bottom:8px;">
+                        <input type="text" id="admin-a3-bio" class="form-input" placeholder="Короткий опис" style="margin-bottom:8px;">
+                        <button class="role-btn accent" onclick="revealArtist(3)">ОПУБЛІКУВАТИ АРТИСТА #3</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX MODAL -->
+    <div class="modal-backdrop" id="lightbox-modal">
+        <div class="modal-box wide">
+            <div class="modal-head mono">
+                <span id="lb-title">ARCHIVE PREVIEW</span>
+                <button class="close-btn" onclick="closeModal('lightbox-modal')">✕</button>
+            </div>
+            <div class="modal-body" style="text-align:center;">
+                <div id="lb-media-slot" style="margin-bottom:16px;"></div>
+                <p class="mono" id="lb-desc" style="font-size:13px;"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- STATE & STORAGE ---
+        let state = JSON.parse(localStorage.getItem('nosignal_state')) || {
+            activeWave: 1,
+            tickets: [
+                {
+                    id: 'NSG-140227',
+                    name: 'ДЕМО ГІСТЬ (ТЕСТ)',
+                    contact: '@nosignal_ua',
+                    wave: '1-Й ЕТАП',
+                    price: 250,
+                    ageVerified: true,
+                    used: false,
+                    usedAt: null
+                }
+            ],
+            guardLogs: []
+        };
+
+        function saveState() {
+            localStorage.setItem('nosignal_state', JSON.stringify(state));
+            renderTicketsSection();
+            renderAdminPanel();
+        }
+
+        // --- RENDER TICKETS ---
+        function renderTicketsSection() {
+            const container = document.getElementById('tickets-container');
+            const w = Number(state.activeWave);
+            const waves = [
+                { num: 1, title: '1-Й ЕТАП', tag: 'EARLY SIGNAL', price: 250, desc: 'Перша обмежена партія квитків після анонсу DJ UFONIK. Обов’язкова перевірка віку 16+ через Дію.' },
+                { num: 2, title: '2-Й ЕТАП', tag: 'SECOND WAVE', price: 350, desc: 'Відкривається після розсекречення другого артиста лайнапу. Кількість місць лімітована.' },
+                { num: 3, title: '3-Й ЕТАП', tag: 'FINAL RELEASE', price: 500, desc: 'Фінальна хвиля онлайн-продажу перед закриттям списків на подію 14.02.2027.' },
+                { num: 4, title: 'НА ВХОДІ', tag: 'DOOR TICKET', price: 500, desc: 'Придбання на локації у Вінниці в ніч івенту за наявності вільних місць та документа 16+ в Дії.' }
+            ];
+
+            const heroLabel = document.getElementById('hero-wave-label');
+            if (w <= 3) {
+                const activeObj = waves.find(x => x.num === w);
+                heroLabel.textContent = `АКТИВНИЙ ${activeObj.title} ПРОДАЖУ — ${activeObj.price} ₴`;
+            } else {
+                heroLabel.textContent = `ОНЛАЙН ПРОДАЖ ЗАКРИТО — ВХІД 500 ₴`;
+            }
+
+            container.innerHTML = waves.map(tier => {
+                const isActive = tier.num === w && tier.num <= 3;
+                const isDoor = tier.num === 4;
+                const isSoldOut = tier.num < w && tier.num <= 3;
+
+                let btnText = 'ОЧІКУЄТЬСЯ';
+                if (isActive) btnText = 'ПРИДБАТИ КВИТОК →';
+                if (isSoldOut) btnText = 'SOLD OUT';
+                if (isDoor) btnText = 'ЛИШЕ НА ЛОКАЦІЇ';
+
+                return `
+                    <div class="ticket-tier ${isActive ? 'active' : ''} ${(!isActive && !isDoor) ? 'disabled' : ''}">
+                        <div>
+                            <div class="tier-header mono">
+                                <span>${tier.title}</span>
+                                <span>${tier.tag}</span>
+                            </div>
+                            <div class="tier-price">${tier.price} ₴</div>
+                            <p class="tier-desc">${tier.desc}</p>
+                        </div>
+                        <button class="tier-btn mono" ${isActive ? `onclick="openBuyModal(${tier.num}, ${tier.price})"` : 'disabled'}>
+                            ${btnText}
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // --- DIIA & TICKET PURCHASE ---
+        let diiaConfirmed = false;
+        let currentPurchase = { wave: 1, price: 250 };
+        let lastGeneratedTicket = null;
+
+        function openBuyModal(waveNum, price) {
+            currentPurchase = { wave: waveNum, price: price };
+            diiaConfirmed = false;
+            document.getElementById('buy-modal-title').textContent = `ОФОРМЛЕННЯ // ${waveNum}-Й ЕТАП (${price} ₴)`;
+            document.getElementById('diia-verify-btn').classList.remove('verified');
+            document.getElementById('diia-verify-btn').innerHTML = '<span>[ДІЯ] ПІДТВЕРДИТИ ВІК 16+</span>';
+            document.getElementById('diia-status-msg').textContent = 'Статус: очікується шеринг цифрового документа...';
+            document.getElementById('diia-status-msg').style.color = 'var(--muted)';
+            document.getElementById('buy-form-container').style.display = 'block';
+            document.getElementById('ticket-result-container').style.display = 'none';
+            document.getElementById('buy-modal').classList.add('open');
+        }
+
+        function verifyAgeWithDiia() {
+            const btn = document.getElementById('diia-verify-btn');
+            const msg = document.getElementById('diia-status-msg');
+            btn.innerHTML = '<span>⏳ ЗАПИТ ДО ДІЯ.ШЕРИНГ...</span>';
+            setTimeout(() => {
+                diiaConfirmed = true;
+                btn.classList.add('verified');
+                btn.innerHTML = '<span>✓ ВІК 16+ ПІДТВЕРДЖЕНО ЧЕРЕЗ ДІЮ</span>';
+                msg.textContent = 'Цифровий підпис дійсний. Доступ до покупки відкрито.';
+                msg.style.color = 'var(--success)';
+            }, 650);
+        }
+
+        function completePurchase(e) {
+            e.preventDefault();
+            if (!diiaConfirmed) {
+                alert('Спочатку підтвердіть вік 16+ через кнопку ДІЯ.');
+                return;
+            }
+            const name = document.getElementById('guest-name').value.trim().toUpperCase();
+            const contact = document.getElementById('guest-contact').value.trim();
+            const id = 'NSG-' + Math.floor(100000 + Math.random() * 900000);
+
+            const ticketObj = {
+                id,
+                name,
+                contact,
+                wave: `${currentPurchase.wave}-Й ЕТАП`,
+                price: currentPurchase.price,
+                ageVerified: true,
+                used: false,
+                usedAt: null
+            };
+
+            state.tickets.unshift(ticketObj);
+            lastGeneratedTicket = ticketObj;
+            saveState();
+
+            document.getElementById('buy-form-container').style.display = 'none';
+            document.getElementById('ticket-result-container').style.display = 'block';
+            document.getElementById('pass-tier-badge').textContent = `${ticketObj.wave} • ${ticketObj.price} ₴`;
+            document.getElementById('pass-owner').textContent = ticketObj.name;
+            document.getElementById('pass-id-display').textContent = `ID: ${ticketObj.id}`;
+            document.getElementById('check-num').textContent = Math.floor(100000 + Math.random() * 900000);
+            document.getElementById('check-time').textContent = new Date().toLocaleString('uk-UA');
+
+            const qrBox = document.getElementById('qrcode-canvas');
+            qrBox.innerHTML = '';
+            const baseUrl = window.location.href.split('?')[0];
+            const verifyPayload = `${baseUrl}?verify=1&id=${ticketObj.id}&age=16PLUS_DIIA`;
+
+            new QRCode(qrBox, {
+                text: verifyPayload,
+                width: 170,
+                height: 170,
+                colorDark: "#080808",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.M
+            });
+        }
+
+        function testTicketInGuardMode() {
+            closeModal('buy-modal');
+            document.getElementById('guard-modal').classList.add('open');
+            if (lastGeneratedTicket) {
+                verifyTicketById(lastGeneratedTicket.id);
+            }
+        }
+
+        // --- ROLE ACCESS (GUARD & ADMIN) ---
+        let pendingRole = null;
+
+        function openGuardAccess() {
+            pendingRole = 'guard';
+            document.getElementById('pin-modal-title').textContent = 'ВХІД В РЕЖИМ ОХОРОНЦЯ';
+            document.getElementById('pin-hint').textContent = 'Введіть PIN охорони (за замовчуванням: 1111):';
+            document.getElementById('pin-input').value = '';
+            document.getElementById('pin-modal').classList.add('open');
+        }
+
+        function openAdminAccess() {
+            pendingRole = 'admin';
+            document.getElementById('pin-modal-title').textContent = 'ВХІД В ПАНЕЛЬ АДМІНІСТРАТОРА';
+            document.getElementById('pin-hint').textContent = 'Введіть PIN адміністратора (за замовчуванням: 0000):';
+            document.getElementById('pin-input').value = '';
+            document.getElementById('pin-modal').classList.add('open');
+        }
+
+        function submitPin() {
+            const val = document.getElementById('pin-input').value.trim();
+            if (pendingRole === 'guard' && val === '1111') {
+                closeModal('pin-modal');
+                document.getElementById('guard-modal').classList.add('open');
+                renderGuardLogs();
+            } else if (pendingRole === 'admin' && val === '0000') {
+                closeModal('pin-modal');
+                renderAdminPanel();
+                document.getElementById('admin-modal').classList.add('open');
+            } else {
+                alert('Невірний PIN-код!');
+            }
+        }
+
+        // --- GUARD SCANNER & VERIFICATION ---
+        let html5QrCode = null;
+
+        function startCameraScanner() {
+            if (!html5QrCode) {
+                html5QrCode = new Html5Qrcode("qr-reader");
+            }
+            html5QrCode.start(
+                { facingMode: "environment" },
+                { fps: 10, qrbox: { width: 220, height: 220 } },
+                (decodedText) => {
+                    let extractedId = decodedText;
+                    if (decodedText.includes('id=')) {
+                        const urlParams = new URLSearchParams(decodedText.split('?')[1]);
+                        extractedId = urlParams.get('id') || decodedText;
+                    }
+                    verifyTicketById(extractedId);
+                },
+                () => {}
+            ).catch(err => {
+                alert('Не вдалося запустити камеру (перевірте дозволи браузера або HTTPS): ' + err);
+            });
+        }
+
+        function stopCameraScanner() {
+            if (html5QrCode && html5QrCode.isScanning) {
+                html5QrCode.stop().catch(() => {});
+            }
+        }
+
+        function stopCameraAndCloseGuard() {
+            stopCameraScanner();
+            closeModal('guard-modal');
+        }
+
+        function verifyTicketById(rawInput) {
+            const cleanId = (rawInput || '').trim().toUpperCase();
+            const area = document.getElementById('guard-result-area');
+            const ticket = state.tickets.find(t => t.id === cleanId);
+
+            if (!ticket) {
+                area.innerHTML = `
+                    <div class="verify-banner verify-used">
+                        <div style="font-size:18px; margin-bottom:8px;">✕ КВИТОК НЕ ЗНАЙДЕНО</div>
+                        <div style="font-size:12px;">ID "${cleanId}" відсутній в базі події NOSIGNAL.</div>
+                    </div>
+                `;
+                return;
+            }
+
+            if (ticket.used) {
+                area.innerHTML = `
+                    <div class="verify-banner verify-used">
+                        <div style="font-size:18px; margin-bottom:8px;">⚠ УВАГА: КВИТОК ВЖЕ ВИКОРИСТАНО</div>
+                        <div style="font-size:12px; margin-bottom:4px;">Гість: ${ticket.name}</div>
+                        <div style="font-size:12px;">Час проходу: ${ticket.usedAt}</div>
+                    </div>
+                `;
+                return;
+            }
+
+            area.innerHTML = `
+                <div class="verify-banner verify-ok">
+                    <div style="font-size:18px; margin-bottom:10px;">✓ ДОСТУП ДОЗВОЛЕНО [16+ ДІЯ]</div>
+                    <div style="font-size:13px; margin-bottom:4px;">ID: <strong>${ticket.id}</strong></div>
+                    <div style="font-size:13px; margin-bottom:4px;">ГІСТЬ: <strong>${ticket.name}</strong></div>
+                    <div style="font-size:13px; margin-bottom:4px;">ТАРИФ: <strong>${ticket.wave} (${ticket.price} ₴)</strong></div>
+                    <div style="font-size:13px; margin-bottom:14px;">ВІК 16+: <strong>ПІДТВЕРДЖЕНО ЧЕРЕЗ ДІЮ</strong></div>
+                    <button class="btn-solid mono" style="background:var(--success); color:#080808; border-color:var(--success);" onclick="redeemTicket('${ticket.id}')">
+                        ПІДТВЕРДИТИ ВХІД / ПОГАСИТИ КВИТОК
+                    </button>
+                </div>
+            `;
+        }
+
+        function redeemTicket(id) {
+            const ticket = state.tickets.find(t => t.id === id);
+            if (!ticket) return;
+            const now = new Date().toLocaleTimeString('uk-UA');
+            ticket.used = true;
+            ticket.usedAt = now;
+            state.guardLogs.unshift(`[${now}] ПРОПУЩЕНО: ${ticket.id} — ${ticket.name}`);
+            saveState();
+            renderGuardLogs();
+            verifyTicketById(id);
+        }
+
+        function renderGuardLogs() {
+            const box = document.getElementById('guard-logs');
+            if (!state.guardLogs.length) {
+                box.innerHTML = 'Записів ще немає.';
+                return;
+            }
+            box.innerHTML = state.guardLogs.map(l => `<div style="padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.1);">${l}</div>`).join('');
+        }
+
+        // --- ADMIN ACTIONS ---
+        function switchAdminTab(tabId, btn) {
+            document.querySelectorAll('.admin-tab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            ['tickets-tab', 'waves-tab', 'lineup-tab'].forEach(id => {
+                document.getElementById(id).style.display = id === tabId ? 'block' : 'none';
+            });
+        }
+
+        function renderAdminPanel() {
+            const total = state.tickets.length;
+            const revenue = state.tickets.reduce((acc, t) => acc + Number(t.price || 0), 0);
+            const checkedIn = state.tickets.filter(t => t.used).length;
+
+            document.getElementById('stat-total-tickets').textContent = total;
+            document.getElementById('stat-revenue').textContent = `${revenue} ₴`;
+            document.getElementById('stat-checked-in').textContent = checkedIn;
+            document.getElementById('admin-active-wave').value = state.activeWave;
+
+            const tbody = document.getElementById('admin-tickets-tbody');
+            tbody.innerHTML = state.tickets.map(t => `
+                <tr>
+                    <td><strong>${t.id}</strong></td>
+                    <td>${t.name}</td>
+                    <td>${t.wave} (${t.price} ₴)</td>
+                    <td style="color:var(--success);">16+ OK</td>
+                    <td style="color:${t.used ? 'var(--accent)' : 'var(--success)'};">
+                        ${t.used ? `ПОГАШЕНО (${t.usedAt})` : 'АКТИВНИЙ'}
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function updateActiveWave(val) {
+            state.activeWave = Number(val);
+            saveState();
+        }
+
+        function issueVipTicket() {
+            const input = document.getElementById('vip-guest-name');
+            const name = input.value.trim().toUpperCase();
+            if (!name) return;
+            const id = 'NSG-VIP' + Math.floor(100 + Math.random() * 900);
+            state.tickets.unshift({
+                id,
+                name,
+                contact: 'VIP LIST',
+                wave: 'VIP / GUEST',
+                price: 0,
+                ageVerified: true,
+                used: false,
+                usedAt: null
+            });
+            input.value = '';
+            saveState();
+        }
+
+        function revealArtist(slotNum) {
+            const name = document.getElementById(`admin-a${slotNum}-name`).value.trim();
+            const genre = document.getElementById(`admin-a${slotNum}-genre`).value.trim();
+            const bio = document.getElementById(`admin-a${slotNum}-bio`).value.trim();
+            if (!name) return alert('Введіть ім’я артиста');
+
+            const card = document.getElementById(`artist-slot-${slotNum}`);
+            card.classList.remove('locked');
+            card.classList.add('unlocked');
+            card.innerHTML = `
+                <div class="artist-top mono">
+                    <span>SLOT // 0${slotNum}</span>
+                    <span class="badge-open">CONFIRMED</span>
+                </div>
+                <div class="artist-body">
+                    <div>
+                        <h3 class="artist-name">${name}</h3>
+                        <div class="artist-genre mono">${genre || 'TECHNO / RAVE SIGNAL'}</div>
+                        <p class="artist-bio">${bio || 'Офіційний резидент лайнапу NOSIGNAL 14.02.2027.'}</p>
+                    </div>
+                    <div class="mono" style="font-size:11px; color:var(--accent); border-top:var(--border-dim); padding-top:12px;">
+                        STATUS: SIGNAL DECRYPTED
+                    </div>
+                </div>
+            `;
+            alert(`Артист #${slotNum} (${name}) опублікований на головній сторінці!`);
+        }
+
+        function downloadStandaloneHTML() {
+            const htmlContent = '<!DOCTYPE html>
+' + document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'nosignal-event.html';
+            a.click();
+        }
+
+        // --- WEB AUDIO SYNTH PREVIEW FOR DJ UFONIK ---
+        let audioCtx = null;
+        let isPlaying = false;
+        let beatInterval = null;
+
+        function toggleAudioPreview() {
+            const btn = document.getElementById('audio-toggle-btn');
+            const txt = document.getElementById('audio-btn-text');
+            const eq = document.getElementById('eq-visualizer');
+
+            if (isPlaying) {
+                clearInterval(beatInterval);
+                isPlaying = false;
+                btn.classList.remove('playing');
+                eq.classList.remove('playing-eq');
+                txt.textContent = '▶ PLAY SIGNAL [PREVIEW]';
+                return;
+            }
+
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            isPlaying = true;
+            btn.classList.add('playing');
+            eq.classList.add('playing-eq');
+            txt.textContent = '■ STOP SIGNAL';
+
+            let step = 0;
+            const stepTime = (60 / 142 / 4) * 1000;
+
+            beatInterval = setInterval(() => {
+                const now = audioCtx.currentTime;
+                if (step % 4 === 0) {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(145, now);
+                    osc.frequency.exponentialRampToValueAtTime(38, now + 0.14);
+                    gain.gain.setValueAtTime(0.7, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.25);
+                }
+                if (step % 2 === 1) {
+                    const bass = audioCtx.createOscillator();
+                    const bGain = audioCtx.createGain();
+                    bass.type = 'sawtooth';
+                    bass.frequency.setValueAtTime(55, now);
+                    bGain.gain.setValueAtTime(0.14, now);
+                    bGain.gain.exponentialRampToValueAtTime(0.001, now + 0.11);
+                    bass.connect(bGain);
+                    bGain.connect(audioCtx.destination);
+                    bass.start(now);
+                    bass.stop(now + 0.11);
+                }
+                step = (step + 1) % 16;
+            }, stepTime);
+        }
+
+        // --- GALLERY & LIGHTBOX ---
+        function filterGallery(type, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.gal-item').forEach(item => {
+                if (type === 'all' || item.dataset.type === type) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function openLightbox(title, desc, type) {
+            document.getElementById('lb-title').textContent = title;
+            document.getElementById('lb-desc').textContent = desc;
+            const slot = document.getElementById('lb-media-slot');
+            
+            if (type === 'video-ufonik') {
+                slot.innerHTML = `
+                    <div style="border:1px solid var(--accent); padding:32px 16px; background:#0F0F0E; text-align:center;">
+                        <div class="mono" style="color:var(--accent); font-size:16px; font-weight:900; margin-bottom:12px;">
+                            ▶ ВІДЕОЗВЕРНЕННЯ DJ UFONIK // 14.02.2027
+                        </div>
+                        <p class="mono" style="font-size:14px; line-height:1.6; color:#F4F4F0; max-width:600px; margin:0 auto;">
+                            «Йо, Вінниця. DJ UFONIK на зв'язку. Побачимося 14 лютого у клубі No Signal, буде багато нових знайомств, улюблена музика та незабутні емоції. Клич друзів, бери квитки та зустрінемося на цьому танцполі!»
+                        </p>
+                    </div>
+                `;
+            } else {
+                slot.innerHTML = `
+                    <div style="border:1px solid #FF2A00; padding:48px 20px; background:#0F0F0E;">
+                        <div class="mono" style="color:#FF2A00; font-size:18px; font-weight:900; margin-bottom:10px;">
+                            [VIDEO FOOTAGE // 142 BPM SIGNAL]
+                        </div>
+                        <div class="mono" style="font-size:12px; color:#CCCCCC;">
+                            ${desc}
+                        </div>
+                    </div>
+                `;
+            }
+            document.getElementById('lightbox-modal').classList.add('open');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('open');
+        }
+
+        // --- AUTO VERIFY FROM URL QUERY (?verify=1&id=...) ---
+        window.addEventListener('DOMContentLoaded', () => {
+            renderTicketsSection();
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('verify') === '1' && params.get('id')) {
+                document.getElementById('guard-modal').classList.add('open');
+                verifyTicketById(params.get('id'));
+            }
+        });
+    </script>
+</body>
+</html>
